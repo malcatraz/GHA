@@ -20,4 +20,4 @@ jobs:
 
       - name: Build VM Image
         run: |
-          az image builder task run --image-template 'W1124H2withApps.json' --resource-group 'W365-RG' --subscription-id '1ec48987-1bbb-4f1f-ac35-ff399bfb46ec'
+          az image builder run --image-template 'W1124H2withApps.json' --resource-group 'W365-RG' --subscription-id '1ec48987-1bbb-4f1f-ac35-ff399bfb46ec'
