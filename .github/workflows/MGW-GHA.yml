@@ -1,0 +1,30 @@
+name: Azure Image Builder Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Azure CLI
+        uses: Azure/CLI@v1
+
+      - name: Run Azure Image Builder Task
+        run: |
+          IMAGE_TEMPLATE='W1124H2withApps.json'
+          RESOURCE_GROUP='W365-RG'
+          IMAGE_NAME='W1124H2Image'
+          az image builder create --resource-group $RESOURCE_GROUP --name $IMAGE_NAME --template $IMAGE_TEMPLATE
+          az image builder run --resource-group $RESOURCE_GROUP --image-template $IMAGE_TEMPLATE
