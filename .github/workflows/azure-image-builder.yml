@@ -20,4 +20,4 @@ jobs:
 
       - name: Build VM Image
         run: |
-          az image builder run -n 'W1124H2withApps' -g 'W365-RG' --subscription '1ec48987-1bbb-4f1f-ac35-ff399bfb46ec'
+          az image builder run -n 'W1124H2Demo' -g 'W365-RG' --subscription '1ec48987-1bbb-4f1f-ac35-ff399bfb46ec'
